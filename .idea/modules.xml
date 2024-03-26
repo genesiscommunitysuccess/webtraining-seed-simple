@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/server/alpha-app/genesisproduct-alpha.alpha-app.test.iml" filepath="$PROJECT_DIR$/.idea/modules/server/alpha-app/genesisproduct-alpha.alpha-app.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/server/build/internal-modules/alpha-dictionary-cache/alpha-generated-dao/genesisproduct-alpha.alpha-dictionary-cache.alpha-generated-dao.main.iml" filepath="$PROJECT_DIR$/.idea/modules/server/build/internal-modules/alpha-dictionary-cache/alpha-generated-dao/genesisproduct-alpha.alpha-dictionary-cache.alpha-generated-dao.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/server/build/internal-modules/alpha-dictionary-cache/alpha-generated-fields/genesisproduct-alpha.alpha-dictionary-cache.alpha-generated-fields.main.iml" filepath="$PROJECT_DIR$/.idea/modules/server/build/internal-modules/alpha-dictionary-cache/alpha-generated-fields/genesisproduct-alpha.alpha-dictionary-cache.alpha-generated-fields.main.iml" />
+    </modules>
+  </component>
+</project>
