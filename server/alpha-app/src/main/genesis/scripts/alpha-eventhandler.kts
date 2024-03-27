@@ -8,9 +8,9 @@
  *
  * Modification History
  */
-import genesis.global.message.PositionReport
-import genesis.global.message.TradeAllocated
-import genesis.global.message.TradeCancelled
+import genesis.global.message.event.PositionReport
+import genesis.global.message.event.TradeAllocated
+import genesis.global.message.event.TradeCancelled
 import global.genesis.TradeStateMachine
 import global.genesis.gen.dao.Trade
 import global.genesis.jackson.core.GenesisJacksonMapper
@@ -22,7 +22,7 @@ import global.genesis.commons.standards.GenesisPaths
 eventHandler {
     val stateMachine = inject<TradeStateMachine>()
 
-    eventHandler<Trade>(name = "TRADE_INSERT") {
+    eventHandler<Trade>(name = "TRADE_INSERT", transactional = true) {
         schemaValidation = false
         onValidate { event ->
             val message = event.details
@@ -118,7 +118,7 @@ eventHandler {
         }
     }
 
-    eventHandler<PositionReport> {
+    eventHandler<PositionReport> (name="POSITION_REPORT"){
         onCommit {
             val mapper = GenesisJacksonMapper.csvWriter<TradeView>()
             val today = LocalDate.now().toString()

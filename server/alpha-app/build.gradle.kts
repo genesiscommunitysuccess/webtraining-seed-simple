@@ -1,8 +1,8 @@
 dependencies {
     compileOnly(genesis("script-dependencies"))
     genesisGeneratedCode(withTestDependency = true)
-    testImplementation("global.genesis:genesis-dbtest-junit4")
-    testImplementation("global.genesis:genesis-testsupport-junit4")
+    testImplementation("global.genesis:genesis-dbtest")
+    testImplementation("global.genesis:genesis-testsupport")
     testImplementation("global.genesis:genesis-dataserver2")
     testImplementation("global.genesis:genesis-pal-dataserver")
 }
