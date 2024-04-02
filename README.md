@@ -1,37 +1,26 @@
-# alpha
+# devtraining-alpha-simple
 
-This project has been created from the Genesis Blank Application Seed. Our seeds allow users to quickly bootstrap
-their projects. Each seed adheres to strict Genesis best practices, and has passed numerous performance, compliance and
-accessibility checks. 
+Answer-key of the Developer Training. From the [devtraining-seed](https://github.com/genesiscommunitysuccess/devtraining-seed), this is the complete application built during the [developer training](https://docs.genesis.global/secure/getting-started/developer-training/training-intro/) and can be used as a reference for it.
 
+# Building, Running, Starting, and Testing
+From the command line, cd into the root directory of the project and then follow these steps.
 
-# Introduction
+## Build
+In order to build this project see the [Build process](https://learn.genesis.global/docs/getting-started/developer-training/training-content-day1/#build).
 
-## Next Steps
+## Deploy
+In order to deploy this project see the [Deploy process](https://learn.genesis.global/docs/getting-started/developer-training/training-content-day1/#deploy).
 
-To get a simple application running check the [Quick Start](https://learn.genesis.global/docs/getting-started/quick-start/) guide.
+## Start and Test
+First, follow the [starting the server steps](https://learn.genesis.global/docs/getting-started/developer-training/training-content-day1/#starting-the-server), and then [run the application locally](https://learn.genesis.global/docs/getting-started/developer-training/training-content-day2/#running-the-application-locally).
 
-If you need an introduction to the Genesis platform and its modules it's worth heading [here](https://learn.genesis.global/docs/getting-started/learn-the-basics/simple-introduction/).
-
-
-## Project Structure
-
-This project contains **server** and **client** directories which contain the server and client code respectively.
-
-### Server
-
-The server code for this project can be found [here](./server/README.md).
-It is built using a DSL-like definition based on the Kotlin language: GPAL.
-
-### Web Client
-
-The Web client for this project can be found [here](./client/README.md). It is built using Genesis's next
-generation web development framework, which is based on Web Components. Our state-of-the-art design system and component
-set is built on top of [Microsoft FAST](https://www.fast.design/docs/introduction/).
+Allow up to 5 mins for all the services to be up and running, then open your browser and navigate to http://localhost:6060
 
 # License
 
-This is free and unencumbered software released into the public domain. For full terms, see [LICENSE](./LICENSE)
+This is free and unencumbered software released into the public domain.
+
+For full terms, see [LICENSE](./LICENSE)
 
 **NOTE** This project uses licensed components listed in the next section, thus licenses for those components are required during development.
 
