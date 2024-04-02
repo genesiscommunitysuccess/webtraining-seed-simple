@@ -2,6 +2,7 @@ package global.genesis
 
 import global.genesis.commons.model.GenesisSet
 import global.genesis.db.DbRecord
+import global.genesis.dictionary.GenesisDictionary
 import global.genesis.gen.dao.Trade
 import global.genesis.gen.dao.enums.Direction
 import global.genesis.gen.dao.enums.TradeStatus
@@ -15,8 +16,10 @@ import org.joda.time.DateTime
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import javax.inject.Inject
 
 class AlphaEventHandlerTest : AbstractGenesisTestSupport<GenesisSet>(
+
     GenesisTestConfig {
         packageName = "global.genesis.eventhandler.pal"
         genesisHome = "/genesisHome/"

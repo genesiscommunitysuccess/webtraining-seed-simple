@@ -5,6 +5,7 @@ dependencies {
     testImplementation("global.genesis:genesis-testsupport")
     testImplementation("global.genesis:genesis-dataserver2")
     testImplementation("global.genesis:genesis-pal-dataserver")
+    testImplementation("global.genesis:genesis-pal-eventhandler")
 }
 
 description = "alpha-app"
