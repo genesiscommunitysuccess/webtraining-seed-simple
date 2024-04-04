@@ -42,6 +42,11 @@ const COLUMNS = [
     field: 'DIRECTION',
     headerName: 'Direction',
   },
+  {
+    ...defaultColumnConfig,
+    field: 'TRADE_DATE',
+    headerName: 'DATE',
+  },
 ];
 
 @customElement({
