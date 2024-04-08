@@ -23,6 +23,12 @@ eventHandler {
         insertEvent {
             initialStates(TradeStatus.NEW)
 
+            permissions {
+                auth(mapName = "ENTITY_VISIBILITY") {
+                    field { counterpartyId }
+                }
+            }
+
             onValidate{ trade ->
                 require(LocalDate.of(trade.tradeDate!!.year, trade.tradeDate!!.monthOfYear, trade.tradeDate!!.dayOfMonth) >= LocalDate.of(now().year, now().monthOfYear, now().dayOfMonth))
             }

@@ -15,7 +15,13 @@ package scripts
  */
 
 dataServer {
-    query("ALL_TRADES", TRADE)
+    query("ALL_TRADES", TRADE_VIEW) {
+        permissioning {
+            auth(mapName = "ENTITY_VISIBILITY") {
+                TRADE_VIEW.COUNTERPARTY_ID
+            }
+        }
+    }
     query("ALL_PRICES", TRADE){
         fields{
             PRICE
