@@ -1,4 +1,3 @@
 package genesis.global.message.event
 
-class PositionReport {
-}
+class PositionReport {}

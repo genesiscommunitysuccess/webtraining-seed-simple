@@ -1,14 +1,11 @@
 import {customElement, FASTElement, observable} from '@microsoft/fast-element';
-import {EntityManagement} from '@genesislcap/foundation-entity-management';
-import { HomeTemplate as template } from './home.template';
 import { HomeStyles as styles } from './home.styles';
-import {ZeroGridPro} from '@genesislcap/foundation-zero-grid-pro';
-import {Connect} from '@genesislcap/foundation-comms';
+import { HomeTemplate as template } from './home.template';
+import {EntityManagement} from '@genesislcap/foundation-entity-management';
 
 EntityManagement;
 
-const name = 'home-route';
-
+//describes the default config for the grid columns
 const defaultColumnConfig = {
   enableCellChangeFlash: true,
   enableRowGroup: true,
@@ -16,6 +13,7 @@ const defaultColumnConfig = {
   enableValue: true,
 };
 
+//grid columns that will be showed
 const COLUMNS = [
   {
     ...defaultColumnConfig,
@@ -42,19 +40,34 @@ const COLUMNS = [
     field: 'DIRECTION',
     headerName: 'Direction',
   },
+  {
+    ...defaultColumnConfig,
+    field: 'TRADE_STATUS',
+    headerName: 'STATUS',
+  },
+  {
+    ...defaultColumnConfig,
+    field: 'ENTERED_BY',
+    headerName: 'USER',
+  },
+  {
+    ...defaultColumnConfig,
+    field: 'TRADE_DATE',
+    headerName: 'DATE',
+  },
 ];
 
+
+const name = 'home-route';
+
 @customElement({
-  name,
+  name: 'home-route',
   template,
   styles,
 })
-export class Home extends FASTElement {
-    public positionsGrid!: ZeroGridPro;
 
-    @Connect connection: Connect;
-@observable columns: any = COLUMNS;
-  constructor() {
-    super();
-  }
+
+export class Home extends FASTElement {
+
+    @observable columns: any = COLUMNS;
 }

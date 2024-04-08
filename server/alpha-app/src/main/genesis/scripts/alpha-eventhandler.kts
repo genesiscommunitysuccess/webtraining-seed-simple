@@ -9,10 +9,6 @@
  * Modification History
  */
 import genesis.global.message.event.PositionReport
-import genesis.global.message.event.TradeAllocated
-import genesis.global.message.event.TradeCancelled
-import global.genesis.TradeStateMachine
-import global.genesis.gen.dao.Trade
 import global.genesis.jackson.core.GenesisJacksonMapper
 import java.io.File
 import java.time.LocalDate
@@ -20,57 +16,60 @@ import global.genesis.commons.standards.GenesisPaths
 
 
 eventHandler {
-    val stateMachine = inject<TradeStateMachine>()
 
-    eventHandler<Trade>(name = "TRADE_INSERT", transactional = true) {
-        schemaValidation = false
-        onValidate { event ->
-            val message = event.details
-            verify {
-                entityDb hasEntry Counterparty.ById(message.counterpartyId)
-                entityDb hasEntry Instrument.byId(message.instrumentId)
+    stateMachine(TRADE.TRADE_STATUS){
+
+        // EVENT_TRADE_INSERT
+        insertEvent {
+            initialStates(TradeStatus.NEW)
+
+            permissions {
+                auth(mapName = "ENTITY_VISIBILITY") {
+                    field { counterpartyId }
+                }
             }
-            ack()
-        }
-        onCommit { event ->
-            val trade = event.details
 
-            if (trade.quantity!! > 0) {
-                val trade = event.details
-                trade.enteredBy = event.userName
-                stateMachine.insert(entityDb,trade)
-                ack()
-            } else {
-                nack("Quantity must be positive")
+            onValidate{ trade ->
+                require(LocalDate.of(trade.tradeDate!!.year, trade.tradeDate!!.monthOfYear, trade.tradeDate!!.dayOfMonth) >= LocalDate.of(now().year, now().monthOfYear, now().dayOfMonth))
+            }
+            onEvent { event ->
+                event.withDetails {
+                    enteredBy = event.userName
+                }
             }
         }
-    }
 
-    eventHandler<Trade>(name = "TRADE_MODIFY") {
-        onCommit { event ->
-            val trade = event.details
-            stateMachine.modify(entityDb,trade)
-            ack()
-        }
-    }
+        modifyEvent {
+            mutableStates(TradeStatus.ALLOCATED, TradeStatus.CANCELLED)
 
-    eventHandler<TradeCancelled>(name = "TRADE_CANCELLED", transactional = true) {
-        onCommit { event ->
-            val message = event.details
-            stateMachine.modify(entityDb,message.tradeId) { trade ->
-                trade.tradeStatus = TradeStatus.CANCELLED
+            // EVENT_TRADE_ALLOCATED
+            transitionEvent(TradeStatus.ALLOCATED){
+                fromStates(TradeStatus.NEW)
+
+                onValidate{ trade ->
+                    require(LocalDate.of(trade.tradeDate!!.year, trade.tradeDate!!.monthOfYear, trade.tradeDate!!.dayOfMonth +2) >= LocalDate.of(now().year, now().monthOfYear, now().dayOfMonth))
+                }
+
+                onEvent{ event, trade ->
+                    trade.enteredBy = event.userName
+                }
             }
-            ack()
-        }
-    }
 
-    eventHandler<TradeAllocated>(name = "TRADE_ALLOCATED", transactional = true) {
-        onCommit { event ->
-            val message = event.details
-            stateMachine.modify(entityDb,message.tradeId) { trade ->
-                trade.tradeStatus = TradeStatus.ALLOCATED
+            // EVENT_TRADE_CANCELLED
+            transitionEvent(TradeStatus.CANCELLED){
+                fromStates(TradeStatus.NEW, TradeStatus.ALLOCATED)
+
+                onValidate{ trade ->
+                    require(trade.direction == Direction.BUY)
+                    require(LocalDate.of(trade.tradeDate!!.year, trade.tradeDate!!.monthOfYear, trade.tradeDate!!.dayOfMonth + 1) >= LocalDate.of(now().year, now().monthOfYear, now().dayOfMonth))
+                }
+
+                onEvent{ event, trade ->
+                    trade.enteredBy = null
+                    trade.tradeDate = now()
+                    trade.tradeStatus = TradeStatus.CANCELLED
+                }
             }
-            ack()
         }
     }
 

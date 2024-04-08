@@ -57,18 +57,13 @@ export const tradeFormSchema = (editing?: boolean) => ({
     },
     {
         "type": "Control",
-        "label": "Trade Date",
-        "scope": "#/properties/TRADE_DATE"
-    },
-    {
-        "type": "Control",
-        "label": "Status",
+        "label":"Status",
         "scope": "#/properties/TRADE_STATUS"
     },
     {
         "type": "Control",
-        "label": "Entered By",
-        "scope": "#/properties/ENTERED_BY"
+        "label":"Date",
+        "scope": "#/properties/TRADE_DATE"
     }
   ],
 });
