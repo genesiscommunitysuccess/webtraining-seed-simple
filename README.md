@@ -1,6 +1,6 @@
 # devtraining-alpha-simple
 
-Answer-key of the Developer Training. From the [devtraining-seed](https://github.com/genesiscommunitysuccess/devtraining-seed), this is the complete application built during the [developer training](https://docs.genesis.global/secure/getting-started/developer-training/training-intro/) and can be used as a reference for it.
+Answer-key of the Developer Training. From the [devtraining-seed-simple](https://github.com/genesiscommunitysuccess/devtraining-seed-simple), this is the complete application built during the [developer training](https://learn.genesis.global/docs/getting-started/developer-training/training-intro/) and can be used as a reference for it.
 
 # Building, Running, Starting, and Testing
 From the command line, cd into the root directory of the project and then follow these steps.
@@ -14,7 +14,7 @@ In order to deploy this project see the [Deploy process](https://learn.genesis.g
 ## Start and Test
 First, follow the [starting the server steps](https://learn.genesis.global/docs/getting-started/developer-training/training-content-day1/#starting-the-server), and then [run the application locally](https://learn.genesis.global/docs/getting-started/developer-training/training-content-day2/#running-the-application-locally).
 
-Allow up to 5 mins for all the services to be up and running, then open your browser and navigate to http://localhost:6060
+Allow up to 5 minutes for all the services to be up and running, then open your browser and navigate to http://localhost:6060
 
 # License
 
