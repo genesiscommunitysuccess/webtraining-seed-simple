@@ -2,7 +2,7 @@ import global.genesis.gen.config.tables.POSITION.NOTIONAL
 import global.genesis.gen.config.tables.POSITION.QUANTITY
 import global.genesis.gen.config.tables.POSITION.VALUE
 import global.genesis.gen.dao.Position
-import global.genesis.gen.dao.enums.Direction
+import global.genesis.gen.dao.enums.alpha.trade.*
 
 consolidators {
     config {}
@@ -14,10 +14,10 @@ consolidators {
         select {
             sum {
                 when(direction) {
-                    Direction.BUY -> when(tradeStatus) {
-                        TradeStatus.NEW -> quantity
-                        TradeStatus.ALLOCATED -> quantity
-                        TradeStatus.CANCELLED -> 0
+                   Direction.BUY -> when(tradeStatus) {
+                       TradeStatus.NEW -> quantity
+                       TradeStatus.ALLOCATED -> quantity
+                       TradeStatus.CANCELLED -> 0
                     }
                     Direction.SELL -> when(tradeStatus) {
                         TradeStatus.NEW -> -quantity

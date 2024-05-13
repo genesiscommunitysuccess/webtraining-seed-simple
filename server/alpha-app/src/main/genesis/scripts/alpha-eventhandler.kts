@@ -13,6 +13,7 @@ import global.genesis.jackson.core.GenesisJacksonMapper
 import java.io.File
 import java.time.LocalDate
 import global.genesis.commons.standards.GenesisPaths
+import global.genesis.gen.dao.enums.alpha.trade.*
 
 
 eventHandler {
@@ -65,7 +66,7 @@ eventHandler {
                 }
 
                 onEvent{ event, trade ->
-                    trade.enteredBy = null
+                    trade.enteredBy = event.userName
                     trade.tradeDate = now()
                     trade.tradeStatus = TradeStatus.CANCELLED
                 }
