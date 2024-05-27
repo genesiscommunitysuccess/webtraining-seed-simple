@@ -27,7 +27,7 @@ dataServer {
             PRICE
             SYMBOL
         }
-        where { trade -> trade.price > 0.0 }
+        where { trade -> trade.price > 10.0 }
     }
     query("ALL_INSTRUMENTS", INSTRUMENT)
     query("ALL_COUNTERPARTIES", COUNTERPARTY)

@@ -1,4 +1,4 @@
-import {customElement, FASTElement, observable} from '@microsoft/fast-element';
+import {customElement, GenesisElement, observable} from '@genesislcap/web-core';
 import { HomeStyles as styles } from './home.styles';
 import { HomeTemplate as template } from './home.template';
 import {EntityManagement} from '@genesislcap/foundation-entity-management';
@@ -58,8 +58,6 @@ const COLUMNS = [
 ];
 
 
-const name = 'home-route';
-
 @customElement({
   name: 'home-route',
   template,
@@ -67,7 +65,7 @@ const name = 'home-route';
 })
 
 
-export class Home extends FASTElement {
+export class Home extends GenesisElement {
 
     @observable columns: any = COLUMNS;
 }
