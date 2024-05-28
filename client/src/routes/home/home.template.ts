@@ -4,7 +4,7 @@ import { tradeFormCreateSchema, tradeFormUpdateSchema } from './schemas';
 
 
 export const HomeTemplate = html<Home>`
-    <zero-card class="top-layout">
+    <rapid-card class="top-layout">
         <entity-management
           resourceName="ALL_TRADES"
           title = "Trades"
@@ -13,12 +13,14 @@ export const HomeTemplate = html<Home>`
           updateEvent = "EVENT_TRADE_MODIFY"
           deleteEvent = "EVENT_TRADE_CANCELLED"
           :columns=${x => x.columns}
+          :createFormUiSchema=${() => tradeFormCreateSchema}
+          :updateFormUiSchema=${() => tradeFormUpdateSchema}
         ></entity-management>
-    </zero-card>
-    <zero-card class="positions-card top-layout">
+    </rapid-card>
+    <rapid-card class="positions-card top-layout">
         <span class="card-title">Positions</span>
-        <zero-grid-pro>
+        <rapid-grid-pro>
               <grid-pro-genesis-datasource resource-name="ALL_POSITIONS"></grid-pro-genesis-datasource>
-        </zero-grid-pro>
-    </zero-card>
+        </rapid-grid-pro>
+    </rapid-card>
 `;

@@ -8,15 +8,16 @@ export const MainStyles = css`
   :host {
     contain: content;
 
-    --nav-height: 60px;
+    --nav-height: 39px;
   }
 
   :host,
-  zero-design-system-provider,
+  rapid-design-system-provider,
   .dynamic-template,
   foundation-router {
     display: flex;
     width: 100%;
     height: 100%;
+    background-color: var(--neutral-layer-4);
   }
 `.withBehaviors(getApp().registerStylesTarget('main'));
