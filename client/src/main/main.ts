@@ -3,10 +3,10 @@ import { EventEmitter } from '@genesislcap/foundation-events';
 import { App } from '@genesislcap/foundation-shell/app';
 import { importPBCAssets } from '@genesislcap/foundation-shell/pbc';
 import { configureDesignSystem } from '@genesislcap/foundation-ui';
-import { baseLayerLuminance, StandardLuminance } from '@microsoft/fast-components';
-import { FASTElement, customElement, observable, DOM } from '@microsoft/fast-element';
-import { Container, inject, Registration } from '@microsoft/fast-foundation';
-import { DefaultRouteRecognizer } from '@microsoft/fast-router';
+import { baseLayerLuminance, StandardLuminance } from '@genesislcap/web-core';
+import { GenesisElement, customElement, observable, DOM } from '@genesislcap/web-core';
+import { Container, inject, Registration } from '@genesislcap/web-core';
+import { DefaultRouteRecognizer } from '@genesislcap/web-core';
 import * as Components from '../components';
 import { MainRouterConfig } from '../routes';
 import { Store, StoreEventDetailMap } from '../store';
@@ -25,7 +25,7 @@ const name = 'alpha-root';
   template,
   styles,
 })
-export class MainApplication extends EventEmitter<StoreEventDetailMap>(FASTElement) {
+export class MainApplication extends EventEmitter<StoreEventDetailMap>(GenesisElement) {
   @App app: App;
   @Connect connect!: Connect;
   @Container container!: Container;

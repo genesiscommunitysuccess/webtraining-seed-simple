@@ -1,6 +1,6 @@
 import { LAYOUT_POPOUT_CONTAINER_CLASS } from '@genesislcap/foundation-layout';
-import { html, ref } from '@microsoft/fast-element';
-import type { ViewTemplate } from '@microsoft/fast-element';
+import { html, ref } from '@genesislcap/web-core';
+import type { ViewTemplate } from '@genesislcap/web-core';
 import type { MainApplication } from './main';
 
 export const DynamicTemplate: ViewTemplate<MainApplication> = html`

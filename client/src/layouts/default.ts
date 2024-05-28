@@ -1,7 +1,7 @@
 import { getApp } from '@genesislcap/foundation-shell/app';
 import type { FoundationRouter } from '@genesislcap/foundation-ui';
-import { css, html } from '@microsoft/fast-element';
-import { FASTElementLayout } from '@microsoft/fast-router';
+import { css, html } from '@genesislcap/web-core';
+import { GenesisElementLayout } from '@genesislcap/web-core';
 import type { Store } from '../store';
 
 type ClientAppRouter = FoundationRouter & { store: Store };
@@ -25,7 +25,7 @@ const baseLayoutCss = css`
   }
 `;
 
-export const loginLayout = new FASTElementLayout(
+export const loginLayout = new GenesisElementLayout(
   html<ClientAppRouter>`
     <div class="container">
       <div class="content">
@@ -36,7 +36,7 @@ export const loginLayout = new FASTElementLayout(
   baseLayoutCss,
 );
 
-export const defaultLayout = new FASTElementLayout(
+export const defaultLayout = new GenesisElementLayout(
   html<ClientAppRouter>`
     <div class="container">
       ${app.registerElementsTarget('layout-start')}

@@ -1,5 +1,5 @@
 import { getApp } from '@genesislcap/foundation-shell/app';
-import { css } from '@microsoft/fast-element';
+import { css } from '@genesislcap/web-core';
 import { stylesFontFaces } from '../styles';
 import './main.css';
 
