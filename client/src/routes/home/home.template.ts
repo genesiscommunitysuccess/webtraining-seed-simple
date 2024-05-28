@@ -13,8 +13,6 @@ export const HomeTemplate = html<Home>`
           updateEvent = "EVENT_TRADE_MODIFY"
           deleteEvent = "EVENT_TRADE_CANCELLED"
           :columns=${x => x.columns}
-          :createFormUiSchema=${() => tradeFormCreateSchema}
-          :updateFormUiSchema=${() => tradeFormUpdateSchema}
         ></entity-management>
     </zero-card>
     <zero-card class="positions-card top-layout">
