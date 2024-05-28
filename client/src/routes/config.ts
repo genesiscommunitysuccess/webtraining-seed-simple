@@ -5,8 +5,8 @@ import {
   Settings as LoginSettings,
 } from '@genesislcap/foundation-login';
 import { FoundationRouterConfiguration } from '@genesislcap/foundation-ui';
-import { optional } from '@microsoft/fast-foundation';
-import { Route } from '@microsoft/fast-router';
+import { optional } from '@genesislcap/web-core';
+import { Route } from '@genesislcap/web-core';
 import { defaultLayout, loginLayout } from '../layouts';
 import { NotFound } from './not-found/not-found';
 import { Home } from './home/home';

@@ -8,11 +8,11 @@
  *
  * Modification History
  */
-import genesis.global.message.event.PositionReport
 import global.genesis.jackson.core.GenesisJacksonMapper
 import java.io.File
 import java.time.LocalDate
 import global.genesis.commons.standards.GenesisPaths
+import global.genesis.gen.dao.enums.alpha.trade.*
 
 
 eventHandler {
@@ -65,7 +65,7 @@ eventHandler {
                 }
 
                 onEvent{ event, trade ->
-                    trade.enteredBy = null
+                    trade.enteredBy = event.userName
                     trade.tradeDate = now()
                     trade.tradeStatus = TradeStatus.CANCELLED
                 }
@@ -117,7 +117,7 @@ eventHandler {
         }
     }
 
-    eventHandler<PositionReport> (name="POSITION_REPORT"){
+    eventHandler<genesis.global.message.event.PositionReport> (name="POSITION_REPORT"){
         onCommit {
             val mapper = GenesisJacksonMapper.csvWriter<TradeView>()
             val today = LocalDate.now().toString()
