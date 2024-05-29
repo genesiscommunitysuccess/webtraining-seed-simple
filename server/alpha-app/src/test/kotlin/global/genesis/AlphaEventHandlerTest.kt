@@ -4,8 +4,8 @@ import global.genesis.commons.model.GenesisSet
 import global.genesis.db.DbRecord
 import global.genesis.dictionary.GenesisDictionary
 import global.genesis.gen.dao.Trade
-import global.genesis.gen.dao.enums.Direction
-import global.genesis.gen.dao.enums.TradeStatus
+import global.genesis.gen.dao.enums.alpha.trade.Direction
+import global.genesis.gen.dao.enums.alpha.trade.TradeStatus
 import global.genesis.message.core.event.Event
 import global.genesis.message.core.event.EventReply
 import global.genesis.testsupport.AbstractGenesisTestSupport
