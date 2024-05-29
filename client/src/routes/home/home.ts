@@ -2,6 +2,8 @@ import {customElement, GenesisElement, observable} from '@genesislcap/web-core';
 import { HomeStyles as styles } from './home.styles';
 import { HomeTemplate as template } from './home.template';
 import {EntityManagement} from '@genesislcap/foundation-entity-management';
+import {RapidGridPro} from '@genesislcap/rapid-grid-pro';
+import {Connect} from '@genesislcap/foundation-comms';
 
 EntityManagement;
 
@@ -68,4 +70,8 @@ const COLUMNS = [
 export class Home extends GenesisElement {
 
     @observable columns: any = COLUMNS;
+
+    public positionsGrid!: RapidGridPro;
+
+    @Connect connection: Connect;
 }
