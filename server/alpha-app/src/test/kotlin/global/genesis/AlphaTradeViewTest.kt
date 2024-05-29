@@ -3,7 +3,7 @@ import global.genesis.db.util.AbstractDatabaseTest
 import global.genesis.db.util.TestUtil
 import global.genesis.dictionary.GenesisDictionary
 import global.genesis.gen.dao.Trade
-import global.genesis.gen.dao.enums.Direction
+import global.genesis.gen.dao.enums.alpha.trade.Direction
 import global.genesis.gen.view.entity.TradeView
 import global.genesis.gen.view.repository.TradeViewAsyncRepository
 import kotlinx.coroutines.flow.count
