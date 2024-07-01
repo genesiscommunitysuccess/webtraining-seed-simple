@@ -23,18 +23,9 @@ eventHandler {
         insertEvent {
             initialStates(TradeStatus.NEW)
 
-            permissions {
-                auth(mapName = "ENTITY_VISIBILITY") {
-                    field { counterpartyId }
-                }
-            }
 
-            onValidate{ trade ->
-                require(LocalDate.of(trade.tradeDate!!.year, trade.tradeDate!!.monthOfYear, trade.tradeDate!!.dayOfMonth) >= LocalDate.of(now().year, now().monthOfYear, now().dayOfMonth))
-            }
             onEvent { event ->
                 event.withDetails {
-                    enteredBy = event.userName
                 }
             }
         }
@@ -46,12 +37,8 @@ eventHandler {
             transitionEvent(TradeStatus.ALLOCATED){
                 fromStates(TradeStatus.NEW)
 
-                onValidate{ trade ->
-                    require(LocalDate.of(trade.tradeDate!!.year, trade.tradeDate!!.monthOfYear, trade.tradeDate!!.dayOfMonth +2) >= LocalDate.of(now().year, now().monthOfYear, now().dayOfMonth))
-                }
 
-                onEvent{ event, trade ->
-                    trade.enteredBy = event.userName
+                onEvent{ _, _ ->
                 }
             }
 
@@ -59,13 +46,8 @@ eventHandler {
             transitionEvent(TradeStatus.CANCELLED){
                 fromStates(TradeStatus.NEW, TradeStatus.ALLOCATED)
 
-                onValidate{ trade ->
-                    require(trade.direction == Direction.BUY)
-                    require(LocalDate.of(trade.tradeDate!!.year, trade.tradeDate!!.monthOfYear, trade.tradeDate!!.dayOfMonth + 1) >= LocalDate.of(now().year, now().monthOfYear, now().dayOfMonth))
-                }
 
                 onEvent{ event, trade ->
-                    trade.enteredBy = event.userName
                     trade.tradeDate = now()
                     trade.tradeStatus = TradeStatus.CANCELLED
                 }

@@ -13,9 +13,7 @@ package scripts
  *   Modification History
  *
  */
-
 dataServer {
-    dataServer {
         query("ALL_TRADES", TRADE_VIEW)
         query("ALL_PRICES", TRADE){
             fields{
@@ -29,5 +27,4 @@ dataServer {
         query("ALL_POSITIONS", POSITION)
         query("ALL_STOCKS", STOCK)
         query("ALL_ORDERS", ORDER)
-    }
 }
