@@ -55,4 +55,25 @@ tables {
         field("LAST_PRICE",DOUBLE)
     }
 
+
+    table(name = "STOCK", id = 2005){
+
+        field("STOCK_ID", type = STRING).primaryKey().sequence("ST")
+        field("COMPANY_NAME", type = STRING).notNull()
+        field("TRADING_VOLUME", type = DOUBLE).notNull()
+        field("CEO", type = STRING).notNull()
+        field("SYMBOL", type = STRING).notNull()
+        field("PRICE",DOUBLE).notNull()
+
+    }
+
+    table(name = "ORDER", id = 2006) {
+        field("ORDER_ID",STRING).sequence("OI").primaryKey()
+        field("INSTRUMENT_ID",STRING).notNull()
+        field("QUANTITY",INT).notNull()
+        field("PRICE",DOUBLE).notNull()
+        field("DIRECTION", ENUM("BUY","SELL")).default("BUY")
+        field("NOTES", type = STRING)
+    }
+
 }

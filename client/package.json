@@ -103,7 +103,6 @@
     "@genesislcap/foundation-zero": "14.181.1",
     "@genesislcap/foundation-zero-grid-pro": "14.181.1",
     "@genesislcap/g2plot-chart": "14.181.1",
-
     "rxjs": "^7.5.4",
     "tslib": "^2.3.1"
   },

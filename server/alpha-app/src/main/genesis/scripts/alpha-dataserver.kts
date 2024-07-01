@@ -15,21 +15,19 @@ package scripts
  */
 
 dataServer {
-    query("ALL_TRADES", TRADE_VIEW) {
-        permissioning {
-            auth(mapName = "ENTITY_VISIBILITY") {
-                TRADE_VIEW.COUNTERPARTY_ID
+    dataServer {
+        query("ALL_TRADES", TRADE_VIEW)
+        query("ALL_PRICES", TRADE){
+            fields{
+                PRICE
+                SYMBOL
             }
+            where { trade -> trade.price > 0.0 }
         }
+        query("ALL_INSTRUMENTS", INSTRUMENT)
+        query("ALL_COUNTERPARTIES", COUNTERPARTY)
+        query("ALL_POSITIONS", POSITION)
+        query("ALL_STOCKS", STOCK)
+        query("ALL_ORDERS", ORDER)
     }
-    query("ALL_PRICES", TRADE){
-        fields{
-            PRICE
-            SYMBOL
-        }
-        where { trade -> trade.price > 10.0 }
-    }
-    query("ALL_INSTRUMENTS", INSTRUMENT)
-    query("ALL_COUNTERPARTIES", COUNTERPARTY)
-    query("ALL_POSITIONS", POSITION)
 }
