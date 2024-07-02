@@ -17,41 +17,25 @@ import global.genesis.gen.dao.enums.alpha.trade.*
 
 eventHandler {
 
-    stateMachine(TRADE.TRADE_STATUS){
-
-        // EVENT_TRADE_INSERT
-        insertEvent {
-            initialStates(TradeStatus.NEW)
-
-
-            onEvent { event ->
-                event.withDetails {
-                }
-            }
+    eventHandler<Trade>(name = "TRADE_INSERT") {
+        schemaValidation = false
+        onCommit { event ->
+            entityDb.insert(event.details)
+            ack()
         }
+    }
 
-        modifyEvent {
-            mutableStates(TradeStatus.ALLOCATED, TradeStatus.CANCELLED)
+    eventHandler<Trade>(name = "TRADE_MODIFY") {
+        onCommit { event ->
+            entityDb.modify(event.details)
+            ack()
+        }
+    }
 
-            // EVENT_TRADE_ALLOCATED
-            transitionEvent(TradeStatus.ALLOCATED){
-                fromStates(TradeStatus.NEW)
-
-
-                onEvent{ _, _ ->
-                }
-            }
-
-            // EVENT_TRADE_CANCELLED
-            transitionEvent(TradeStatus.CANCELLED){
-                fromStates(TradeStatus.NEW, TradeStatus.ALLOCATED)
-
-
-                onEvent{ event, trade ->
-                    trade.tradeDate = now()
-                    trade.tradeStatus = TradeStatus.CANCELLED
-                }
-            }
+    eventHandler<Trade>(name = "TRADE_DELETE") {
+        onCommit { event ->
+            entityDb.delete(event.details)
+            ack()
         }
     }
 
